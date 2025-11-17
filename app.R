@@ -185,13 +185,11 @@ server <- function(input, output, session) {
   observeEvent(
     input$filter_top_x_pct_attr,
     {
-      print(input$filter_top_x_pct_attr)
       ids <- explanations_tbl |>
         distinct(attrition_prob, EmployeeNumber) |>
         slice_max(attrition_prob, prop = input$filter_top_x_pct_attr / 100) |>
         arrange(desc(attrition_prob), EmployeeNumber) |>
         pull(EmployeeNumber)
-      print(ids)
 
       updatePickerInput(
         session = session,
