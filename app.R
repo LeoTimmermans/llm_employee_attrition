@@ -43,7 +43,7 @@ lapply(files, source)
 # Load training data & create summary data ----
 source("00_functions/data_processing_pipeline.R")
 definitions_raw_tbl <- read_excel(
-  "00_Data/telco_data_definitions.xlsx",
+  "00_data/telco_data_definitions.xlsx",
   sheet = 1,
   col_names = FALSE
 )
