@@ -1,0 +1,166 @@
+meta:
+  # name: Single string is fine if not legally complex
+  name: Leo — Certified Data Scientist for Business
+  # link: Keep only the most relevant professional links; remove what's not used
+  link:
+    home: https://your-portfolio.example.com # TODO: Replace with your portfolio site 
+    linkedin: https://www.linkedin.com/in/ljjtimmermans/
+    # github: https://github.com/your-handle # TODO: Replace
+    # bluesky: https://bsky.app/profile/your-handle # Optional; remove if unused
+
+logo:
+  # Use placeholders; store files next to _brand.yml for reproducible deployments
+  images:
+    wordmark-dark: logos/wordmark-dark.svg # TODO: Place file locally
+    wordmark-light: logos/wordmark-light.svg # TODO: Place file locally
+    monogram: logos/monogram.svg # Minimal avatar/icon for small spaces
+  small: monogram # Uses name from logo.images
+  medium:
+    light: wordmark-dark # For light backgrounds
+    dark: wordmark-light # For dark backgrounds
+  large: wordmark-dark # Hero/cover usage; swap to light on dark backgrounds
+
+color:
+  palette:
+    # Choose mid-tone primaries for accessibility; prefer hex
+    white: "#FFFFFF"
+    black: "#121212"
+    navy: "#1F3A5F"      # Professional primary (midpoint navy)
+    slate: "#5B6770"     # Neutral for secondary text
+    sky: "#3AA0C6"       # Clean info accent (teal-cyan midpoint)
+    emerald: "#2F8F62"   # Positive/success
+    amber: "#FFB020"     # Warning
+    crimson: "#C23A3A"   # Danger
+    gray-100: "#F6F7F9"  # Light background wells
+    gray-900: "#1A1A1A"  # Dark text alternative
+    blue: navy           # Bootstrap alias
+    teal: sky            # Bootstrap alias
+    green: emerald       # Bootstrap alias
+    yellow: amber        # Bootstrap alias
+    red: crimson         # Bootstrap alias
+
+  # Keep only what you need; reference palette names for consistency
+  foreground: black      # High-contrast body text
+  background: white      # Default page background
+  primary: navy          # Links, buttons, accents
+  secondary: slate       # Muted text, disabled states
+  success: emerald
+  info: teal
+  warning: amber
+  danger: red
+  light: white
+  dark: gray-900
+
+typography:
+  fonts:
+    # Prefer Bunny Fonts (GDPR-friendly). Provide local fallbacks if needed.
+    - family: Inter
+      source: bunny
+      weight: [400, 500, 600, 700]
+      style: [normal, italic]
+    - family: Merriweather Sans
+      source: bunny
+      weight: [600, 700]
+      style: [normal]
+    - family: Fira Code
+      source: bunny
+      weight: [400, 500, 600]
+      style: [normal]
+    # If you use a proprietary font, comment it here and add a Google/Bunny substitute above.
+    # - family: YourCorpSans
+    #   source: file
+    #   files:
+    #     - path: fonts/yourcorp/YourCorpSans-Regular.ttf
+    #     - path: fonts/yourcorp/YourCorpSans-SemiBold.ttf
+    # # Substitute recommendation: Inter (above) for body, Merriweather Sans (above) for headings.
+
+  # Base body text: neutral, readable, modest tracking
+  base:
+    family: Inter
+    weight: 400
+    size: 16px     # Prefer 16px for comfortable reading
+    line-height: 1.6
+
+  # Headings: distinct yet modern; avoid heavy slabs unless brand needs gravitas
+  headings:
+    family: Merriweather Sans
+    weight: 600
+    style: normal
+    line-height: 1.25
+    color: dark      # Slightly darker than body for scannability
+
+  # Monospace for code, data frames, and inline metrics
+  monospace:
+    family: Fira Code
+    weight: 400
+    size: 0.9rem
+  monospace-inline:
+    color: primary
+    background-color: gray-100
+  monospace-block:
+    color: foreground
+    background-color: background
+    line-height: 1.5
+
+  # Links: emphasize clarity; keep decoration subtle
+  link:
+    weight: 600
+    color: primary
+    background-color: transparent
+    decoration: underline
+
+defaults:
+  # Use sparingly; prefer native schema above
+  # bootstrap: Additional SCSS overrides for Bootstrap contexts (Quarto/Shiny)
+  #   defaults:
+  #     # Keep controls consistent with brand palette
+  #     btn-border-radius: 0.25rem
+  #     input-border-radius: 0.25rem
+  #     link-hover-color: $brand-teal
+  #     link-hover-decoration: none
+  #   rules: |
+  #     // Minimal focus styles for accessibility
+  #     :focus-visible {
+  #       outline: 3px solid $brand-teal;
+  #       outline-offset: 2px;
+  #     }
+
+  quarto:
+    format:
+      html:
+        theme:
+          light:
+            # Map brand tokens to Quarto’s theme variables via bslib
+            primary: !expr "var(--brand-primary)" # Use CSS variables if you export them
+          dark:
+            # Optional: keeps contrast with same palette
+            primary: !expr "var(--brand-teal)"
+        toc: true
+        smooth-scroll: true
+      pdf:
+        documentclass: article
+        number-sections: true
+
+  shiny:
+    theme:
+      defaults:
+        navbar-bg: $brand-navy
+        navbar-color: $brand-white
+        border-color: $brand-slate
+        body-bg: $brand-white
+        body-color: $brand-black
+        input-bg: $brand-white
+        input-border-color: $brand-slate
+        input-focus-border-color: $brand-teal
+        btn-primary-bg: $brand-navy
+        btn-primary-color: $brand-white
+        btn-primary-hover-bg: $brand-teal
+      rules: |
+        // Subtle panel shadows for professional feel
+        .card, .well {
+          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        // Table row hover
+        .table-hover tbody tr:hover {
+          background-color: $brand-gray-100;
+        }
