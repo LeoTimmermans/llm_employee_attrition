@@ -449,7 +449,7 @@ server <- function(input, output, session) {
     shinychat::chat_append(
       "chat",
       list(
-        content = "Ask me anything about the suggested price for the new bike."
+        content = "Ask me anything about why an employee is at risk of leaving the company and measures to retain the employee."
       )
     )
   })
